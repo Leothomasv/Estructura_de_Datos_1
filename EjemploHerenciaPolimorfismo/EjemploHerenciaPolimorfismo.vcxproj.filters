@@ -35,5 +35,8 @@
     <ClInclude Include="TrianguloRectangulo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="nodo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

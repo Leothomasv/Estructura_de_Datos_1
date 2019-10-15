@@ -129,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Figura2D.h" />
+    <ClInclude Include="nodo.h" />
     <ClInclude Include="Rectangulo.h" />
     <ClInclude Include="TrianguloRectangulo.h" />
   </ItemGroup>
