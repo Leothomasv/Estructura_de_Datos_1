@@ -19,6 +19,11 @@ int main()
 
 	lista.CrearFigura(rectangulo);
 	lista.CrearFigura(circulo);
+	lista.CrearFigura(rombo);
+	lista.CrearFigura(cuadrado);
+	lista.CrearFigura(trapecio);
+	lista.CrearFigura(trianguloRectangulo);
+	lista.CrearFigura(triangulo);
 
 	lista.ImprimirLista();
 
