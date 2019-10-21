@@ -4,12 +4,27 @@
 
 #include "Figura2D.h"
 
-class rombo : public Figura2D {
+class Rombo : public Figura2D {
 
 private :
-
+	float Diagonal1, Diagonal2;
 public:
-	rombo();
+	Rombo();
+
+	Rombo(float, float);
+
+	void setDiagonal1(float);
+	float getDiagonal1();
+
+	void setDiagonal2(float);
+	float getDiagonal2();
+
+	float getArea();
+	float getPerimetro();
+
+	void imprimirFigura();
+
+	int getTipo();
 
 
 

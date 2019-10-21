@@ -10,7 +10,7 @@
 #include "triangulo.h"
 
 
-#include <iostream>
+
 
 using namespace std;
 
@@ -53,14 +53,16 @@ void ListaEnlazada::CrearFigura(TipoFigura tipo) {
 		break;
 
 	case rombo:
-
+		figura = new Rombo(10, 20);
+		nuevo = new Nodo(figura, nullptr);
+		unir(nuevo);
 		break;
+
 	case trapecio:
-
+		figura = new Trapecio(5, 9, 6, 8, 5);
+		nuevo = new Nodo(figura, nullptr);
+		unir(nuevo);
 		break;
-
-
-
 	}
 
 }
@@ -75,4 +77,13 @@ void ListaEnlazada::unir(Nodo* figura){
 
 	}
 
+}
+
+void ListaEnlazada::ImprimirLista(void) {
+	Nodo* actual = primero;
+	while (actual != nullptr)
+	{
+		actual->getFigura()->imprimirFigura();
+		actual = actual->getSiguiente();
+	}
 }

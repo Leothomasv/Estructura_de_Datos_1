@@ -1,41 +1,28 @@
-
 #include <iostream>
 #include <conio.h>
 
-using namespace std;
-
+#include "ListaEnlazada.h"
 #include "Rectangulo.h"
 #include "TrianguloRectangulo.h"
+#include "circulo.h"
+#include "cuadrado.h"
+#include "rombo.h"
+#include "trapecio.h"
 
 
-
-void imprimir(Figura2D * figura)
-{
-	
-	figura->imprimirFigura();
-
-	if(figura->getTipo() == TipoFigura::trianguloRectangulo)
-	{
-		TrianguloRectangulo *tr = (TrianguloRectangulo *)figura;
-		cout << "Hipotenusa: " << tr->getHipotenusa() << "\n";
-	}
-}
+using namespace std;
 
 
 int main()
 {
+	ListaEnlazada lista;
 
-	Figura2D * figuras[4];
+	lista.CrearFigura(rectangulo);
+	lista.CrearFigura(circulo);
 
-	figuras[0] = new Rectangulo(9, 6);
-	figuras[1] = new Rectangulo(5, 6.3);
-	figuras[2] = new TrianguloRectangulo(3.5, 6); 
-	figuras[3] = new TrianguloRectangulo(7, 12.5); 
+	lista.ImprimirLista();
 
-	for(int i = 0; i < 4; i++)
-	{
-		imprimir(figuras[i]);
-	}
+
 
 
 	//system("pause");
