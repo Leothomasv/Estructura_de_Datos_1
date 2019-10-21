@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="circulo.cpp" />
     <ClCompile Include="cuadrado.cpp" />
+    <ClCompile Include="ListaEnlazada.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rectangulo.cpp" />
     <ClCompile Include="rombo.cpp" />
@@ -136,6 +137,7 @@
     <ClInclude Include="circulo.h" />
     <ClInclude Include="cuadrado.h" />
     <ClInclude Include="Figura2D.h" />
+    <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="nodo.h" />
     <ClInclude Include="Rectangulo.h" />
     <ClInclude Include="rombo.h" />

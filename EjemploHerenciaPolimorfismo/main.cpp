@@ -27,7 +27,7 @@ int main()
 
 	Figura2D * figuras[4];
 
-	figuras[0] = new Rectangulo(8, 6);
+	figuras[0] = new Rectangulo(9, 6);
 	figuras[1] = new Rectangulo(5, 6.3);
 	figuras[2] = new TrianguloRectangulo(3.5, 6); 
 	figuras[3] = new TrianguloRectangulo(7, 12.5); 

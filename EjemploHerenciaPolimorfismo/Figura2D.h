@@ -4,7 +4,7 @@
 
 #define FIGURA2D_H
 
-enum TipoFigura{rectangulo, trianguloRectangulo};
+enum TipoFigura{rectangulo, trianguloRectangulo, triangulo, cuadrado, circulo, rombo, trapecio};
 
 class Figura2D
 {

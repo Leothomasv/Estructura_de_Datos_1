@@ -4,12 +4,28 @@
 
 #include "Figura2D.h"
 
-class triangulo : public Figura2D {
+class Triangulo : public Figura2D {
 
 private:
-	
+	float base, altura;
 public:
-	triangulo();
+	Triangulo();
+
+	Triangulo(float, float);
+
+	void setBase(float);
+	void setAltura(float);
+
+	float getBase();
+	float getAltura();
+
+	float getArea();
+	float getPerimetro();
+
+	void imprimirFigura();
+
+	int getTipo();
+
 };
 
 

@@ -4,12 +4,23 @@
 
 #include "Figura2D.h" 
 
-class circulo :public Figura2D {
+class Circulo :public Figura2D {
 
 private:
-
+	double radio;
 public:
-	circulo();
+	Circulo();
+	Circulo(double radio);
+	
+	double getRadio();
+	void setRadio(double radio);
+
+	float getArea();
+	float getPerimetro();
+
+	void imprimirFigura();
+
+	int getTipo();
 
 
 };

@@ -4,13 +4,27 @@
 
 #include "Figura2D.h" 
 
-class cuadrado :public Figura2D {
+class Cuadrado :public Figura2D {
 
 private:
-
+	float Side;
 public:
-	cuadrado();
+	Cuadrado();
 
+	Cuadrado(float);
+
+	void setSide(float);
+	float getSide();
+
+	float getArea();
+	float getPerimetro();
+
+	float getBase();
+	float getAltura();
+
+	void imprimirFigura();
+
+	int getTipo();
 
 };
 
