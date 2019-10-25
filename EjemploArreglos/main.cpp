@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void insertarArray(array<int, 5> &);
+void insertarArray(array<int, 5> & );
 void imprimirArray(const array <int, 5> &);
 
 void insertarVector(vector<int> &);
@@ -19,11 +19,15 @@ int main() {
 	cout << "*** Ingreso de Valores  ***\n";
 	
 	//esto es para saber la posicion en memoria
-	/*for (int i = 0; i < 5; i++) {
-		cout << "Posicion de memoria: array[" << i << "]: " << &arreglo[i] << endl;
-	}*/
+	for (int i = 0; i < 5; i++) {
+		cout << "Posicion de memoria: array[" << i << "]: " << &arreglo2[i] << endl;
+	}
 
+	arreglo2.push_back(8);
 
+	for (int i = 0; i < 6; i++) {
+		cout << "Posicion de memoria: array[" << i << "]: " << &arreglo2[i] << endl;
+	}
 	//insertarArray(arreglo);
 	//imprimirArray(arreglo);
 
