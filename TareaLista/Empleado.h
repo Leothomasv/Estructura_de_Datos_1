@@ -2,29 +2,24 @@
 #ifndef EMPLEADO_H
 #define EMPLEADO_H
 
-#include <string>
 #include <list>
+#include <string>
 using namespace std;
 
-
 class Empleado {
-
 private:
 	int codigo;
-	string nombre;
-	float salario;
-
+	string Nombre;
+	float Salario;
 public:
-	void esVacia ();
-	void agregarEmpleado(list<string>);
-	int obtenerCantidadEmpleado();
-	float obtenerTotalSalarios();
-	float obtenerSalarioMayor();
-	Empleado encontrarEmpleado();
-	
+	Empleado(void);
+	Empleado(int,string,float);
 
-
+	void agregarEmpleado(list<Empleado*>&, Empleado*);
+	int ObtenerCantidadEmpleados(list<Empleado*>&);
+	float ObtenerTotalSalarios(list<Empleado*>&);
+	float obtenerSalarioMayor(list<Empleado*>&);
+	void encontrarEmpleado(list<Empleado*>&, int);
+	void imprimirLista(list<Empleado*>& );
 };
-
-
 #endif // !EMPLEADO_H
