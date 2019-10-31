@@ -45,7 +45,7 @@ float Empleado::obtenerSalarioMayor(list<Empleado*>& lista) {
 
 void Empleado::encontrarEmpleado(list<Empleado*>& lista, int codigo) {
 	for (auto& x : lista) {
-		if (codigo== x->codigo)
+		if (codigo == x->codigo)
 		{
 			cout << "Empleado: { Nombre: " << x->Nombre << " ,Codigo: " << x->codigo << " ,Salario: " << x->Salario << " }\n";
 		}

@@ -30,6 +30,8 @@ public:
 	void pop(void);
 	const T& peek(void);
 };
+
+
 #endif // !STACKNODE_H
 
 
