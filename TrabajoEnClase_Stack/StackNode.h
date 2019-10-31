@@ -22,10 +22,10 @@ private:
 	StackNode<T>* primero;
 public:
 	Stack(void);
-	bool estaVacia(void);   
+	bool estaVacia();   
 	void push(const T&);
-	void pop(void);
-	const T& peek(void);
+	void pop();
+	const T& peek();
 	void imprimir();
 };
 
@@ -34,7 +34,7 @@ template <class T>
 Stack<T>::Stack():Stack<T>::primero(nullptr) {}
 
 template <class T>
-bool Stack<T>::estaVacia(void) {
+bool Stack<T>::estaVacia() {
 	return primero == nullptr;
 }
 
@@ -55,7 +55,7 @@ void Stack<T>::push(const T& dato) {
 }
 
 template <class T>
-void Stack<T>::pop(void) {
+void Stack<T>::pop() {
 	if (!estaVacia()) {
 
 		StackNode<T>* borrar = primero;
@@ -65,13 +65,13 @@ void Stack<T>::pop(void) {
 }
 
 template <class T>
-const T& Stack<T>::peek(void) {
+const T& Stack<T>::peek() {
 	StackNode<T>* nuevo = primero;
 	return nuevo->dato;
 }
 
 template <class T>
-void Stack<T>::imprimir(void) {
+void Stack<T>::imprimir() {
 	StackNode<T>* actual = primero;
 
 	while (actual != nullptr) {
