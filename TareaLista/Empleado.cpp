@@ -43,6 +43,10 @@ float Empleado::obtenerSalarioMayor(list<Empleado*>& lista) {
 	return salarioMayor;
 }
 
+int Empleado::ObtenerCantidadEmpleados(list<Empleado*>& lista) {
+	return lista.size();
+}
+
 void Empleado::encontrarEmpleado(list<Empleado*>& lista, int codigo) {
 	for (auto& x : lista) {
 		if (codigo == x->codigo)
@@ -50,11 +54,6 @@ void Empleado::encontrarEmpleado(list<Empleado*>& lista, int codigo) {
 			cout << "Empleado: { Nombre: " << x->Nombre << " ,Codigo: " << x->codigo << " ,Salario: " << x->Salario << " }\n";
 		}
 	}
-}
-
-
-int Empleado::ObtenerCantidadEmpleados(list<Empleado*>& lista) {
-	return lista.size();
 }
 
 void Empleado::imprimirLista(list<Empleado*>& lista) {
