@@ -20,9 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Archivos.h" />
+    <ClInclude Include="ListaEnlazada.h" />
+    <ClInclude Include="Nodo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Archivos.cpp" />
+    <ClCompile Include="ListaEnlazada.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

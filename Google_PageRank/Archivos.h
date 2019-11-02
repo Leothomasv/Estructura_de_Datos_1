@@ -9,6 +9,7 @@ class functions {
 public:
 
 	void lecturaHTML(string);
+	void verificarHref(string);
 
 private:
 
