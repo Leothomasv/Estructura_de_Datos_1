@@ -1,19 +1,54 @@
 #pragma once
 #ifndef NODO_H
-#define NODO-H
+#define NODO_H
 
-class Nodo {
-
-private:
-	Nodo* siguiente;
-	Nodo* abajo;
+#include <string>
+#include <iostream>
+using namespace std;
 
 
-public:
+
+struct NodoPaginaRedirect {
+
+	string PaginaRedirect;
+	NodoPaginaRedirect* siguiente;
+
+	NodoPaginaRedirect(string page, NodoPaginaRedirect*siguiente) {
+		this->PaginaRedirect = page;
+		this->siguiente = siguiente;
+
+	}
+
+	NodoPaginaRedirect() {
+		PaginaRedirect = "";
+	}
+};
+
+struct NodoPagina {
+
+	string pagina;
+	double PageRank;
+	NodoPagina* abajo;
+	NodoPaginaRedirect* siguiente;
+
+	NodoPagina(string pagina, NodoPagina* abajo, NodoPaginaRedirect* siguiente, double PageRank) {
+
+		this->pagina = pagina;
+		this->PageRank = PageRank;
+		this->abajo = abajo;
+		this->siguiente = siguiente;
+	}
+		
+
+
+
+	NodoPagina() {
+		pagina = "";
+		PageRank = 0;
+	}
 
 
 };
-
 
 
 #endif // !NODO_H

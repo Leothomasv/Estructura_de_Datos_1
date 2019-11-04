@@ -1,16 +1,25 @@
 #pragma once
 #ifndef LISTAENLAZADA_H
 #define LISTAENLAZADA_H
+#include <string>
 #include "Nodo.h"
+#include "ListaEnlazada.h"
 
-class ListaEnlazada {
+using namespace std;
 
-private:
+class ListaEnlazada{
+
+	NodoPagina* primero;
+	NodoPaginaRedirect* abajo;
 
 public:
-	void estaVacia();
-	void agregar(Nodo* );
+	bool estaVacia();
+	ListaEnlazada(void);
+	void agregar(string);
+	void agregarSiguiente(string);
+	void agregarAbajo(string);
 	void imprimir();
+
 };
 
 #endif // !LISTAENLAZADA_H
