@@ -35,8 +35,10 @@ void ListaEnlazada::agregarSiguiente(string pagina) {
 			tmp = tmp->abajo;
 		}
 		tmp->siguiente = abajo;
+		int x = 0;
 	}
 }
+
 void ListaEnlazada::agregarAbajo(string pagina) {
 	NodoPagina* nuevo = new NodoPagina(pagina, nullptr, nullptr, 0);
 	NodoPagina* actual = primero;
@@ -44,7 +46,7 @@ void ListaEnlazada::agregarAbajo(string pagina) {
 	{
 		actual = actual->abajo;
 	}
-	actual->abajo = nuevo;
+ 	actual->abajo = nuevo;
 	abajo = nullptr;
 }
 

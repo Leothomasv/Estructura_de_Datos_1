@@ -10,13 +10,14 @@ using namespace std;
 class functions { //nuevo herencia
 public:
 	ListaEnlazada lista;
-	void lecturaHTML(string);
+	void lecturaHTML(string,int);
 	void buscarHref(string);
 	int cantidadHref(string);
 
-	void findKeywords(string );
+	void findKeywords(string);
 
 	void calcularPR();
+
 
 };
 #endif // !ARCHIVOS_H

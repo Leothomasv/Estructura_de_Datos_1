@@ -50,7 +50,7 @@ bool Cola<T>::isEmpty() {
 
 template<class T>
 bool Cola<T>::isFull() {
-	return cantidad < 3;
+	return cantidad < 4;
 }
 
 template <class T>
@@ -62,8 +62,8 @@ void Cola<T>::Enqueue(T dato) {
 
 		if (isEmpty()) {
 			primero = nuevo;
-			ultimo = nuevo;
 			primero->siguiente = ultimo;
+			ultimo = nuevo;
 			cantidad++;
 		}
 		else {
@@ -84,8 +84,11 @@ void Cola<T>::Dequeue() {
 	if (!isEmpty()) {
 
 		ColaNode<T>* actual = primero;
+		primero = primero->siguiente;
+		ultimo->siguiente = primero;
+		primero->anterior = ultimo;
 
-
+		delete actual;
 	}
 
 }
