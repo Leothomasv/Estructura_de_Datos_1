@@ -10,17 +10,17 @@ using namespace std;
 
 struct NodoPaginaRedirect {
 
-	string PaginaRedirect;
+	string pagina;
 	NodoPaginaRedirect* siguiente;
 
 	NodoPaginaRedirect(string page, NodoPaginaRedirect*siguiente) {
-		this->PaginaRedirect = page;
+		this->pagina = page;
 		this->siguiente = siguiente;
 
 	}
 
 	NodoPaginaRedirect() {
-		PaginaRedirect = "";
+		pagina = "";
 	}
 };
 
@@ -38,10 +38,7 @@ struct NodoPagina {
 		this->abajo = abajo;
 		this->siguiente = siguiente;
 	}
-		
-
-
-
+	
 	NodoPagina() {
 		pagina = "";
 		PageRank = 0;

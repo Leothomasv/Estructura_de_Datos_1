@@ -2,6 +2,7 @@
 #include <fstream>
 #include "ListaEnlazada.h"
 
+
 //variables de prueba
 string href1, href2, href3, href4;
 int contador = 0;
@@ -82,28 +83,55 @@ void functions::lecturaHTML(string archivo) {
 		}
 
 	}
+
 	file.close();
-	switch (contador)
+	if (contador == 0)
 	{
-	case 1:
+		lista.agregar(archivo);
+		lista.imprimirLista();
+		return;
+	}
+	if (contador==1)
+	{
+		lista.agregarAbajo(href1);
 		buscarHref(href1);
-		break;
-	case 2:
-		buscarHref(href1);buscarHref(href2);
-		break;
-	case 3:
+		lista.imprimirLista();
+		return;
+	}
+	if (contador==2)
+	{
+		lista.agregarAbajo(href1);
+		buscarHref(href1);
+		lista.agregarAbajo(href2);
+		buscarHref(href2);
+		lista.imprimirLista();
+		return;
+	}
+	
+	if (contador==3)
+	{
 		lista.agregarAbajo(href1);
 		buscarHref(href1);
 		lista.agregarAbajo(href2);
 		buscarHref(href2);
 		lista.agregarAbajo(href3);
 		buscarHref(href3);
-		break;
-	case 4:
-		buscarHref(href1);buscarHref(href2);buscarHref(href3);buscarHref(href4);
-		break;
-	default:
-		break;
+		cout << endl;
+		lista.imprimirLista();
+		return;
+	}
+	if (contador==4)
+	{
+		lista.agregarAbajo(href1);
+		buscarHref(href1);
+		lista.agregarAbajo(href2);
+		buscarHref(href2);
+		lista.agregarAbajo(href3);
+		buscarHref(href3);
+		lista.agregarAbajo(href4);
+		buscarHref(href4);
+		lista.imprimirLista();
+		return;
 	}
 
 	cout << endl;
@@ -188,11 +216,31 @@ int functions::cantidadHref(string pagina) {
 
 }
 
-void functions::findKeywords() {
+void functions::findKeywords(string pagina) {
 
-	string PaginasWeb[7] = {"google.html","amazon.html","facebook.html","instagram.html","twitter.html","whastapp.html",""};
+	string PaginasWeb[7] = {"google.html","amazon.html","facebook.html","instagram.html","twitter.html","whatsapp.html","youtube.html"};
+	string text;
+	for (int i = 0; i < 7; i++) {
+		ifstream file(PaginasWeb[i]);
+		if (!file.is_open())
+		{
+			return;
+		}
+		else {
+			while (!file.eof()) {
+				getline(file, text);
+				if (text.find(pagina) != string::npos) {
 
+					cout << "Pagina: " << PaginasWeb[i];
 
+				}
+			}
+			file.close();
+
+		}
+		
+
+	}
 }
 
 void functions::calcularPR(){

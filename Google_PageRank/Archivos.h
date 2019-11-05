@@ -14,7 +14,7 @@ public:
 	void buscarHref(string);
 	int cantidadHref(string);
 
-	void findKeywords();
+	void findKeywords(string );
 
 	void calcularPR();
 

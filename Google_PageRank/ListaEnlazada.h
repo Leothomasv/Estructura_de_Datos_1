@@ -18,7 +18,7 @@ public:
 	void agregar(string);
 	void agregarSiguiente(string);
 	void agregarAbajo(string);
-	void imprimir();
+	void imprimirLista();
 
 };
 

@@ -9,10 +9,11 @@ int main() {
 
 	functions F;
 	ListaEnlazada List;
-	cout << "sdf";
 
-	F.lecturaHTML("google.html");
-	
+	//F.lecturaHTML("amazon.html");
+	cout << endl;
+
+	F.findKeywords("Music");
 	
 
 	
