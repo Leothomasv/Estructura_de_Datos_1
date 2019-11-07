@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include "ListaEnlazada.h"
+#include <string>
 
 
 bool primeroX = true;
@@ -11,9 +12,9 @@ bool prueba = false;
 
 vector<string> WebPages;
 
-void functions::lecturaHTML(string archivo,int posicion) {
+void functions::lecturaHTML(string archivo, int posicion) {
 
-	ifstream file ("C:\\Users\\leoth\\source\\repos\\Estructura_de_Datos_1\\Google_PageRank\\pages\\" + archivo);
+	ifstream file("C:\\Users\\leoth\\source\\repos\\Estructura_de_Datos_1\\Google_PageRank\\pages\\" + archivo);
 	string text1 = "href";
 	string text;
 
@@ -22,24 +23,23 @@ void functions::lecturaHTML(string archivo,int posicion) {
 	string delimiter = "\"";
 	string token;
 	string PaginaPrincipal = archivo;
-	
 
-	
+
+
 	if (!file.is_open()) {
 		cout << "Fallo de archivo";
 	}
 
 	//pagina principal
 	cout << endl;
-	cout << "{" << PaginaPrincipal << "}->";
-	if (primeroX)
-	{
+	//cout << "{" << PaginaPrincipal << "}->";
+	if (primeroX) {
 		lista.agregar(archivo);
 		primeroX = false;
 	}
 	while (!file.eof()) {
 
-         getline(file, text);
+		getline(file, text);
 		if (text.find(text1) != string::npos) {
 
 			for (int i = 0; i < text.size(); i++) {
@@ -50,14 +50,11 @@ void functions::lecturaHTML(string archivo,int posicion) {
 			std::string token;
 			while ((pos = direccion.find(delimiter)) != std::string::npos) {
 				token = direccion.substr(0, pos);
- 				direccion.erase(0, pos + delimiter.length());
-				if (token.find(html) != string::npos)
-				{
+				direccion.erase(0, pos + delimiter.length());
+				if (token.find(html) != string::npos) {
 					direccion = token;
-					if (existe)
-					{
-						if (prueba)
-						{
+					if (existe) {
+						if (prueba) {
 							lista.agregarAbajo(archivo);
 							prueba = false;
 						}
@@ -68,10 +65,10 @@ void functions::lecturaHTML(string archivo,int posicion) {
 					else {
 						lista.agregarSiguiente(direccion);
 					}
-					
+
 				}
 			}
-			cout << "{" << direccion << "}->";
+			//cout << "{" << direccion << "}->";
 			direccion = "";
 			token = "";
 		}
@@ -82,8 +79,7 @@ void functions::lecturaHTML(string archivo,int posicion) {
 
 
 	cout << endl;
-	if (hrefs.size()==posicion)
-	{
+	if (hrefs.size() == posicion) {
 		//lista.imprimirLista();
 		prueba = true;
 		hrefs.clear();
@@ -91,60 +87,12 @@ void functions::lecturaHTML(string archivo,int posicion) {
 		return;
 	}
 	lista.agregarAbajo(hrefs[posicion]);
-	lecturaHTML(hrefs[posicion], posicion+1);
+	lecturaHTML(hrefs[posicion], posicion + 1);
 	cout << endl;
-	
+
 }
 
-//void functions::buscarHref(string archivo) {
-//
-//	ifstream file(archivo);
-//	string text1 = "href";
-//	string text;
-//
-//	string direccion;
-//	string html = ".html";
-//	string delimiter = "\"";
-//	string token;
-//	string PaginaPrincipal = archivo;
-//
-//
-//	//pagina principal
-//	cout << endl;
-//	cout << "{" << PaginaPrincipal << "}->";
-//
-//	while (!file.eof()) {
-//
-//		getline(file, text);
-//
-//		if (text.find(text1) != string::npos) {
-//
-//			for (int i = 0; i < text.size(); i++) {
-//				direccion += text[i];
-//			}
-//
-//			size_t pos = 0;
-//			std::string token;
-//			while ((pos = direccion.find(delimiter)) != std::string::npos) {
-//				token = direccion.substr(0, pos);
-//				direccion.erase(0, pos + delimiter.length());
-//
-//				if (token.find(html) != string::npos)
-//				{
-//					direccion = token;
-//				}
-//			}
-//
-// 			cout << "{" << direccion << "}->";
-//			lista.agregarSiguiente(direccion);
-//			direccion = "";
-//		}
-//
-//	}
-//	file.close();
-//
-//
-//}
+
 
 int functions::cantidadHref(string pagina) {
 	ifstream file(pagina);
@@ -179,10 +127,9 @@ void functions::findKeywords(string palabra) {
 	for (int i = 0; i < WebPages.size(); i++) {
 
 		string page = WebPages[i];
-		ifstream file("C:\\Users\\leoth\\source\\repos\\Estructura_de_Datos_1\\Google_PageRank\\pages\\"+ page);
+		ifstream file("C:\\Users\\leoth\\source\\repos\\Estructura_de_Datos_1\\Google_PageRank\\pages\\" + page);
 
-		if (!file.is_open())
-		{
+		if (!file.is_open()) {
 			return;
 		}
 		else {
@@ -190,36 +137,28 @@ void functions::findKeywords(string palabra) {
 				getline(file, text);
 				if (text.find(palabra) != string::npos) {
 
-					cout << "Pagina: " << WebPages[i] << endl;
+					//cout << "Pagina: " << WebPages[i] << endl;
 					lecturaHTML(WebPages[i], 0);
 				}
 			}
 			file.close();
 
 		}
-		
+
 
 	}
 }
 
-void functions::calcularPR(){
 
 
-}
-
-
-
-void functions::list_dir()
-{
+void functions::list_dir() {
 	string direct = "C:\\Users\\leoth\\source\\repos\\Estructura_de_Datos_1\\Google_PageRank\\pages";
 
 	DIR* directorio;
 	struct dirent* elemento;
 	string elem;
-	if (directorio = opendir(direct.c_str()))
-	{
-		while (elemento = readdir(directorio))
-		{
+	if (directorio = opendir(direct.c_str())) {
+		while (elemento = readdir(directorio)) {
 			elem = elemento->d_name;
 			if (elem != "." && elem != "..") {
 				//cout << elem << endl;
@@ -229,8 +168,5 @@ void functions::list_dir()
 	}
 	closedir(directorio);
 }
-
-
-
 
 

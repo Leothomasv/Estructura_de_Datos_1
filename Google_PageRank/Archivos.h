@@ -11,7 +11,7 @@ using namespace std;
 class functions { //nuevo herencia
 public:
 	ListaEnlazada lista;
-	void lecturaHTML(string,int);
+	void lecturaHTML(string, int);
 	//void buscarHref(string);
 	int cantidadHref(string);
 
@@ -29,6 +29,4 @@ public:
 
 };
 #endif // !ARCHIVOS_H
-
-
 

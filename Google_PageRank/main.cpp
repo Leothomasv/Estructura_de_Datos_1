@@ -5,8 +5,7 @@
 using namespace std;
 
 
-int main() {
-
+int main(int argc, char** argv) {
 	functions F;
 	ListaEnlazada List;
 
@@ -14,15 +13,12 @@ int main() {
 	F.lecturaHTML("facebook.html", 0);
 	F.lecturaHTML("instagram.html", 0);*/
 
-	F.findKeywords("Videos");
-	cout << F.lista.extraerRepetidos("facebook.html");
+	F.findKeywords(argv[1]);
+	//cout << F.lista.extraerRepetidos ("facebook.html");
 	F.lista.LimpiarLista();
-	F.lista.imprimirLista();
+	//F.lista.imprimirLista ();
+	F.lista.ImprimirPR();
+
 	//F.findKeywords("Music");
-	
-
-	
-
-
 
 }

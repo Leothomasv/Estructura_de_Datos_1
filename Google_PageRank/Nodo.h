@@ -6,14 +6,12 @@
 #include <iostream>
 using namespace std;
 
-
-
 struct NodoPaginaRedirect {
 
 	string pagina;
 	NodoPaginaRedirect* siguiente;
 
-	NodoPaginaRedirect(string page, NodoPaginaRedirect*siguiente) {
+	NodoPaginaRedirect(string page, NodoPaginaRedirect* siguiente) {
 		this->pagina = page;
 		this->siguiente = siguiente;
 
@@ -25,7 +23,7 @@ struct NodoPaginaRedirect {
 };
 
 struct NodoPagina {
-
+	int enlaces;
 	string pagina;
 	double PageRank;
 	NodoPagina* abajo;
@@ -38,11 +36,13 @@ struct NodoPagina {
 		this->abajo = abajo;
 		this->siguiente = siguiente;
 	}
-	
+
 	NodoPagina() {
 		pagina = "";
 		PageRank = 0;
+		enlaces = 0;
 	}
+
 
 
 };
