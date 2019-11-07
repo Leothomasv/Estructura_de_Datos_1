@@ -14,12 +14,7 @@ public:
 	void lecturaHTML(string, int);
 	//void buscarHref(string);
 	int cantidadHref(string);
-
 	void findKeywords(string);
-
-	void calcularPR();
-
-
 	void list_dir();
 
 

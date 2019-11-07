@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <compare>
+#include <fstream>
 
 ListaEnlazada::ListaEnlazada(void) : primero(nullptr), abajo(nullptr) {
 }
@@ -161,7 +162,7 @@ void ListaEnlazada::ImprimirPR() {
 	NodoPagina* actual = primero;
 	NodoPagina* tmp = primero;
 	CalcularPR(tmp, 0);
-	ImprimirVector();
+	//ImprimirVector();
 	cout << "\n\n\n";
 	while (actual != 0) {
 		//cout << "Pagina: " << actual->pagina << " PR: " << actual->PageRank << " Enlaces: " << actual->enlaces << endl;
@@ -276,11 +277,19 @@ void ListaEnlazada::CalcularPR(NodoPagina* page, int iteracciones) {
 	CalcularPR(page->abajo, iteracciones);
 }
 
-void ListaEnlazada::ImprimirVector() {
+void ListaEnlazada::ArchivoPr() {
+	ofstream filePr("PaginasWeb.html", ios::app);
+	if (!filePr) {
+		cout << "error de apertura en archivo" << endl;
+		return;
+	}
 	for (int i = 0; i < Pr.size(); i++) {
+
+		filePr << "Pagina: " << Pr[i]->pagina << "PR: " << Pr[i]->PageRank << "\n";
 		//cout << "Pagina: " << Pr[i]->pagina << " PR: " << Pr[i]->PageRank << endl;
 	}
-}
+
+} 
 
 double ListaEnlazada::ExtraerPR(string pagina) {
 	for (int i = 0; i < Pr.size(); i++) {

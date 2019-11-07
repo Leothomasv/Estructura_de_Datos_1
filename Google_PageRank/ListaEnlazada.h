@@ -21,11 +21,13 @@ public:
 	void agregarAbajo(string);
 	void imprimirLista();
 	void LimpiarLista();
+
 	int extraerRepetidos(string);
 	void asignarEnlaces();
+
 	void ImprimirPR();
 	void CalcularPR(NodoPagina*, int);
-	void ImprimirVector();
+	void ArchivoPr();
 	double ExtraerPR(string);
 	void Ordenar();
 
