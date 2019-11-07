@@ -1,4 +1,6 @@
 #include "ListaEnlazada.h"
+#include <vector>
+#include <algorithm>
 
 ListaEnlazada::ListaEnlazada(void) : primero(nullptr), abajo(nullptr) {
 }
@@ -46,16 +48,16 @@ void ListaEnlazada::agregarAbajo(string pagina) {
 	{
 		actual = actual->abajo;
 	}
- 	actual->abajo = nuevo;
+	actual->abajo = nuevo;
 	abajo = nullptr;
 }
 
 void ListaEnlazada::imprimirLista() {
 	cout << endl;
 	cout << endl;
-	if (primero->siguiente==nullptr&&primero->abajo==nullptr)
+	if (primero->siguiente == nullptr && primero->abajo == nullptr)
 	{
-		cout << "["<<primero->pagina << "]";
+		cout << "[" << primero->pagina << "]";
 		return;
 	}
 	bool entrar = true;
@@ -92,7 +94,7 @@ void ListaEnlazada::imprimirLista() {
 					actual = actual->abajo;
 					tmp = actual->siguiente;
 					entrar = true;
-					
+
 					cout << endl;
 				}
 				else {
@@ -107,4 +109,89 @@ void ListaEnlazada::imprimirLista() {
 		}
 	}
 }
+NodoPagina* ListaEnlazada::ExtraerNodosPagina() {
+	NodoPagina* actual = primero;
+	return actual;
+}
+vector<string>paginas;
+
+void ListaEnlazada::LimpiarLista() {
+	int contador = 0;
+	int posicion = 0;
+	int contador2 = 0;
+	int cantidadElementos = 0;
+	NodoPagina* actual = primero;
+	while (actual != 0)
+	{
+		NodoPagina* tmp = actual;
+		NodoPagina* tmp2 = actual;
+		for (int i = 0; i < paginas.size(); i++)
+		{
+			if (paginas[posicion] == actual->pagina && contador == 0)
+			{
+				cantidadElementos = extraerRepetidos(paginas[posicion]) - 1;
+				if (cantidadElementos ==0)
+				{
+					posicion++;
+					break;
+				}
+				else {
+					tmp = tmp->abajo;
+				}
+				contador++;
+			}
+			if (contador != 0)
+			{
+				if (tmp->pagina == paginas[posicion] && contador2 < extraerRepetidos(paginas[posicion]))
+				{
+					tmp2->abajo = tmp->abajo;
+					delete tmp;
+					
+					tmp = primero;
+					contador2++;
+					if (contador2 == cantidadElementos)//
+					{
+						posicion++;
+						if (posicion==paginas.size())
+						{
+							return;
+						}
+						break;
+					}
+				}
+			}
+			int x = 0;
+			i = 0;
+			tmp2 = tmp;
+			tmp = tmp->abajo;
+		}		
+		actual = actual->abajo;
+		contador2 = 0;
+		contador = 0;
+	}
+
+
+}
+
+int ListaEnlazada::extraerRepetidos(string pagina) {
+	NodoPagina* actual = primero;
+	int contador = 0;
+	while (actual != nullptr)
+	{
+		paginas.push_back(actual->pagina);
+		if (pagina == actual->pagina)
+		{
+			contador++;
+		}
+		actual = actual->abajo;
+	}
+	auto end = paginas.end();
+	for (auto it = paginas.begin(); it != end; ++it) {
+		end = std::remove(it + 1, end, *it);
+	}
+
+	paginas.erase(end, paginas.end());
+	return contador;
+}
+
 

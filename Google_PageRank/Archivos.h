@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <dirent.h>
 #include "ListaEnlazada.h"
 
 using namespace std;
@@ -11,12 +12,19 @@ class functions { //nuevo herencia
 public:
 	ListaEnlazada lista;
 	void lecturaHTML(string,int);
-	void buscarHref(string);
+	//void buscarHref(string);
 	int cantidadHref(string);
 
 	void findKeywords(string);
 
 	void calcularPR();
+
+
+	void list_dir();
+
+
+
+
 
 
 };

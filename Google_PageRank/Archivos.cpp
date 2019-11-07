@@ -4,17 +4,16 @@
 #include "ListaEnlazada.h"
 
 
-//variables de prueba
-string href1, href2, href3, href4;
-int contador = 0;
-
 bool primeroX = true;
 bool existe = true;
 vector<string> hrefs;
 bool prueba = false;
+
+vector<string> WebPages;
+
 void functions::lecturaHTML(string archivo,int posicion) {
 
-	ifstream file (archivo);
+	ifstream file ("C:\\Users\\leoth\\source\\repos\\Estructura_de_Datos_1\\Google_PageRank\\pages\\" + archivo);
 	string text1 = "href";
 	string text;
 
@@ -65,7 +64,6 @@ void functions::lecturaHTML(string archivo,int posicion) {
 						lista.agregarSiguiente(direccion);
 						hrefs.push_back(direccion);
 						token = "";
-						contador++;
 					}
 					else {
 						lista.agregarSiguiente(direccion);
@@ -86,6 +84,7 @@ void functions::lecturaHTML(string archivo,int posicion) {
 	cout << endl;
 	if (hrefs.size()==posicion)
 	{
+		//lista.imprimirLista();
 		prueba = true;
 		hrefs.clear();
 		existe = true;
@@ -173,12 +172,15 @@ int functions::cantidadHref(string pagina) {
 
 }
 
-void functions::findKeywords(string pagina) {
+void functions::findKeywords(string palabra) {
+	list_dir();
 
-	string PaginasWeb[7] = {"google.html","amazon.html","facebook.html","instagram.html","twitter.html","whatsapp.html","youtube.html"};
 	string text;
-	for (int i = 0; i < 7; i++) {
-		ifstream file(PaginasWeb[i]);
+	for (int i = 0; i < WebPages.size(); i++) {
+
+		string page = WebPages[i];
+		ifstream file("C:\\Users\\leoth\\source\\repos\\Estructura_de_Datos_1\\Google_PageRank\\pages\\"+ page);
+
 		if (!file.is_open())
 		{
 			return;
@@ -186,10 +188,10 @@ void functions::findKeywords(string pagina) {
 		else {
 			while (!file.eof()) {
 				getline(file, text);
-				if (text.find(pagina) != string::npos) {
+				if (text.find(palabra) != string::npos) {
 
-					cout << "Pagina: " << PaginasWeb[i];
-
+					cout << "Pagina: " << WebPages[i] << endl;
+					lecturaHTML(WebPages[i], 0);
 				}
 			}
 			file.close();
@@ -204,5 +206,31 @@ void functions::calcularPR(){
 
 
 }
+
+
+
+void functions::list_dir()
+{
+	string direct = "C:\\Users\\leoth\\source\\repos\\Estructura_de_Datos_1\\Google_PageRank\\pages";
+
+	DIR* directorio;
+	struct dirent* elemento;
+	string elem;
+	if (directorio = opendir(direct.c_str()))
+	{
+		while (elemento = readdir(directorio))
+		{
+			elem = elemento->d_name;
+			if (elem != "." && elem != "..") {
+				//cout << elem << endl;
+				WebPages.push_back(elem);
+			}
+		}
+	}
+	closedir(directorio);
+}
+
+
+
 
 

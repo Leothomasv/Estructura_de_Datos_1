@@ -10,10 +10,14 @@ int main() {
 	functions F;
 	ListaEnlazada List;
 
-	F.lecturaHTML("google.html",0);
+	/*F.lecturaHTML("google.html",0);
 	F.lecturaHTML("facebook.html", 0);
-	cout << endl;
+	F.lecturaHTML("instagram.html", 0);*/
 
+	F.findKeywords("Videos");
+	cout << F.lista.extraerRepetidos("facebook.html");
+	F.lista.LimpiarLista();
+	F.lista.imprimirLista();
 	//F.findKeywords("Music");
 	
 
