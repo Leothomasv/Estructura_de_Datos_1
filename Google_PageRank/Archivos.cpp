@@ -149,8 +149,6 @@ void functions::findKeywords(string palabra) {
 	}
 }
 
-
-
 void functions::list_dir() {
 	string direct = "C:\\Users\\leoth\\source\\repos\\Estructura_de_Datos_1\\Google_PageRank\\pages";
 

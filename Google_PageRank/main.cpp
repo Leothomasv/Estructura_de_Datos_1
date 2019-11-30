@@ -18,6 +18,7 @@ int main(int argc, char** argv) {
 	F.lista.LimpiarLista();
 	//F.lista.imprimirLista ();
 	F.lista.ImprimirPR();
+	//F.lista.ArchivoPr();
 
 	
 

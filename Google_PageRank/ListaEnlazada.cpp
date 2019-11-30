@@ -162,7 +162,7 @@ void ListaEnlazada::ImprimirPR() {
 	NodoPagina* actual = primero;
 	NodoPagina* tmp = primero;
 	CalcularPR(tmp, 0);
-	//ImprimirVector();
+	ArchivoPr();
 	cout << "\n\n\n";
 	while (actual != 0) {
 		//cout << "Pagina: " << actual->pagina << " PR: " << actual->PageRank << " Enlaces: " << actual->enlaces << endl;
@@ -170,8 +170,8 @@ void ListaEnlazada::ImprimirPR() {
 	}
 }
 
-bool Case1 = true;
-bool Case2 = true;
+bool Case1 = true; // 1 primero iteracion
+bool Case2 = true; // misma interacion 
 bool Case3 = false;
 bool Case4 = false;
 void ListaEnlazada::CalcularPR(NodoPagina* page, int iteracciones) {
@@ -241,7 +241,7 @@ void ListaEnlazada::CalcularPR(NodoPagina* page, int iteracciones) {
 
 			while (tmp != 0) {
 				if (page->pagina == tmp->pagina) {
-					PR += (double)1 / actual->enlaces;
+					PR += (double)1 / actual->enlaces; //aqui esta la primera iteracion, ya las demas son los siguientes iteraciones
 				}
 				tmp = tmp->siguiente;
 			}
@@ -278,6 +278,7 @@ void ListaEnlazada::CalcularPR(NodoPagina* page, int iteracciones) {
 }
 
 void ListaEnlazada::ArchivoPr() {
+
 	ofstream filePr("PaginasWeb.html", ios::app);
 	if (!filePr) {
 		cout << "error de apertura en archivo" << endl;
@@ -302,8 +303,10 @@ double ListaEnlazada::ExtraerPR(string pagina) {
 
 void ListaEnlazada::Ordenar() {
 	std::sort(Pr.begin(), Pr.end(), [](const NodoPagina* a, const NodoPagina* b) { return (a->PageRank > b->PageRank); });
+
 	//std::sort (primero,primero + 1000,[](NodoPagina* a,NodoPagina* b) { return a->PageRank > b->PageRank; });
    //std::sort (Pr.begin (),Pr.end ());
+
 	for (int i = 0; i < Pr.size(); i++) {
 		//archivo << "Pagina: " << ordenar[i]->link << " PR: " << ordenar[i]->Pr << endl;
 		cout << "<h2>Pagina: " << Pr[i]->pagina << " PR: " << Pr[i]->PageRank << "</h2>" << endl;
