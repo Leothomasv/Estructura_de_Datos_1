@@ -19,10 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Archivo.h" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlanEstudio.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Archivo.cpp" />
+    <ClInclude Include="PlanEstudio.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
