@@ -2,26 +2,29 @@
 #ifndef PLAN_ESTUDIO_H
 #define PLAN_ESTUDIO_H
 #include <iostream>
+#include <string>
+#include <fstream>
 using namespace std;
 
 
 struct materia {
 
-	int codigo;
-	char nombre [20];
+	string codigo;
+	string nombre;
 	int uv;
-	int anio;
-	int periodo;
+	string requisito;
+
 	int cantiHijos;
 
+	materia** hijos;//arreglo de apuntadores
 
-	materia** hijos;
+	materia(){}
 
-
-	materia(int _codigo, char _nombre, int _uv) {
+	materia(string _codigo, string _nombre, int _uv, string _requisito) {
 
 		codigo = _codigo;
-		nombre[20] = _nombre;
+		nombre = _nombre;
+		requisito = _requisito;
 
 		uv = _uv;
 		cantiHijos = 0;
@@ -34,20 +37,28 @@ class PlanEstudio {
 private:
 	materia* raiz;
 	bool estaVacio();
-	materia* buscarRec(materia*, int);
+	materia* buscarRec(materia*, string);
 	void imprimirRec(materia*);
-	void agregarMateria(int codigo, char nombre, int uv, int CodigoPadre);
 public:
 	PlanEstudio();
-	void agregarMateria(int, const char*, int, int);
-	materia* buscar(int);
+	void agregarMateria(string, string, int, string);
+	materia* buscar(string);
 	void imprimir();
 
+	//nuevas 
+	void crearPensum(string);
+	void leerPensum(string);
+};
 
+struct Estudiantes {
+	int NumeroCuenta;
+	char* NombreEstudiante;
+	char* CodPlanEstudio;
+	double IndiceAcademico;
+	int ClasesAprobadas;
 };
 
 
 
-
-
 #endif 
+

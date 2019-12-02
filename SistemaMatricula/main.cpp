@@ -4,14 +4,17 @@
 int main() {
 
 	int OpcionPrincipal = 0;
+	string NombrePensum;
+	
 
-
+	PlanEstudio nuevo;
 	do {
 		cout << "<<<< MENU PRINCIPAL >>>>" << endl;
-		cout << "1. Crear Plan de Estudio" << endl;
-		cout << "2. Iniciar/Cerrar Inscripcion de clases" << endl;
-		cout << "3. Informacion Academica" << endl;
-		cout << "4. Salir del sistema" << endl;
+		cout << "1. Crear Pensum" << endl;
+		cout << "2. Matricularse" << endl;
+		cout << "3. Iniciar/Cerrar Inscripcion de clases" << endl;
+		cout << "4. Informacion Academica" << endl;
+		cout << "5. Salir del sistema" << endl;
 		cout << "<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>" << endl;
 
 		cout << "Ingrese opcion deseada: ";
@@ -20,22 +23,28 @@ int main() {
 		switch (OpcionPrincipal)
 		{
 		case 1:
-			//Plan de estudio
+			//Crear Pensum
+			cout << "Ingrese nombre del pensum: ";
+			cin >> NombrePensum;
+			nuevo.crearPensum(NombrePensum);
 			break;
 
 		case 2:
-			//Inciar Clases
+
 			break;
 
 		case 3:
-			//Informacion academica
+
+			break;
+		case 4:
+
 			break;
 
-		case 4:
+		case 5:
 			cout << "Saliendo del sistema..." << endl;
 		default:
 			break;
 		}
-	} while (OpcionPrincipal !=4);
+	} while (OpcionPrincipal !=5);
 
 }
