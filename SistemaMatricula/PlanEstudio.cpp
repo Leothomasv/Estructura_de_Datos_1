@@ -12,7 +12,7 @@ void PlanEstudio::agregarMateria(string codigo, string nombre, int uv, string Co
 
 	if (CodigoPadre=="")
 	{
-		raiz[1] =(materia*)nueva;
+		raiz[0] =(materia*)nueva;
 		return;
 	}
 	materia* padre = buscar(CodigoPadre);
@@ -41,8 +41,12 @@ void PlanEstudio::agregarMateria(string codigo, string nombre, int uv, string Co
 	//cout << "Materia Ingresada!";
 }
 bool PlanEstudio::estaVacio() {
-
-	return raiz == 0;
+	
+	bool si = false;
+	if (raiz == NULL) {
+		si = true;
+	}
+	return si;
 }
 
 materia* PlanEstudio::buscar(string requisito) {

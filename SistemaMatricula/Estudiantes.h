@@ -11,8 +11,6 @@ struct Estudiantes {
 	int cantidadClasesAprobadas;   
 
 	Estudiantes();
-
-	Estudiantes
 };
 
 

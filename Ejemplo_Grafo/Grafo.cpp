@@ -100,7 +100,6 @@ void Grafo::agregarArista(char origen, char destino, int costo)
 		
 	}
 
-
 }
 
 int Grafo::obtenerIndiceVertice(char id) {

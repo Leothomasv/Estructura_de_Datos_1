@@ -19,11 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sistema.h" />
+    <ClInclude Include="Directory.h" />
+    <ClInclude Include="File.h" />
+    <ClInclude Include="FileEntry.h" />
+    <ClInclude Include="FileSystem.h" />
+    <ClInclude Include="FileType.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Sistema.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

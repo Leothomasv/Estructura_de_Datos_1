@@ -15,16 +15,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sistema.h">
+    <ClInclude Include="File.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileEntry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Directory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Resource Files</Filter>
+    <ClCompile Include="FileSystem.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sistema.cpp">
-      <Filter>Resource Files</Filter>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

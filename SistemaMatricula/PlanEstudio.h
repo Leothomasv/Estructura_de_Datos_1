@@ -44,7 +44,7 @@ struct materia {//memoria
 	int uv;
 	materia* hijos;
 	int cantiHijos;
-
+	materia* guardar;
 	materia(string codigo, string nombre, int _uv) {
 		this->codigo = codigo;
 		this->nombre = nombre;
