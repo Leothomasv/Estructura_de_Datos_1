@@ -8,13 +8,15 @@ private:
 	char* vertices;
 	int nVertices;
 	int** aristas;
+	int** costos;
 
 public:
 	Grafo();
 	void agregarVertice(char);
-	void agregarArista(char, char);
+	void agregarArista(char, char, int);
 	void imprimir();
 	int obtenerIndiceVertice(char);
+	void TransformarGrafo();
 };
 
 

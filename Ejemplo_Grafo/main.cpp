@@ -9,15 +9,10 @@ int main() {
 	nuevo.agregarVertice('D');
 	
 	// agrear aristas
-	nuevo.agregarArista('A', 'B');
-	nuevo.agregarArista('C', 'D');
-	nuevo.agregarArista('B', 'C');
-	nuevo.agregarArista('A', 'D');
-
-
-
-
-
+	nuevo.agregarArista('A', 'B', 4);
+	nuevo.agregarArista('A', 'C', 6);
+	nuevo.agregarArista('D', 'A', 2);
+	nuevo.agregarArista('D', 'C', 8);
 
 	nuevo.imprimir();
 

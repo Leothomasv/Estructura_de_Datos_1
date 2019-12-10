@@ -22,9 +22,6 @@ private:
 	int bytes;
 public:
 
-
-
-
 };
 
 class Directory :public FileEntry {

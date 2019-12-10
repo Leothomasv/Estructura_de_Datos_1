@@ -7,30 +7,79 @@
 using namespace std;
 
 
-struct materia {
+//struct materia {
+//
+//	char codigo[10];
+//	char nombre[20];
+//	int uv;
+//	char requisito[10];
+//
+//	int cantiHijos;
+//
+//	materia** hijos;//arreglo de apuntadores
+//
+//	materia(){
+//		strcpy_s(codigo, "-1");
+//		strcpy_s(nombre, "-1");
+//		strcpy_s(requisito, "-1");
+//		uv = 0;
+//		cantiHijos = 0;
+//		hijos = 0;
+//	}
+//
+//	materia( char _codigo[10], char _nombre[20], int _uv, char _requisito[10]) {
+//
+//		strcpy_s(codigo,_codigo);
+//		strcpy_s(nombre, _nombre);
+//		strcpy_s(requisito, _requisito);
+//		uv = _uv;
+//		cantiHijos = 0;
+//		hijos = 0;
+//	}
+//};
 
-	string codigo;
-	string nombre;
+struct materia {//memoria
+	char* nombre;
+	char* codigo;
 	int uv;
-	string requisito;
-
+	materia** hijos;
 	int cantiHijos;
 
-	materia** hijos;//arreglo de apuntadores
+	materia() {}
 
-	materia(){}
+	materia(const char* _codigo, const char* _nombre, int _uv) {
 
-	materia(string _codigo, string _nombre, int _uv, string _requisito) {
+		codigo = new char[strlen(_codigo)];
+		strcpy_s(this->nombre, strlen(_codigo) + 1, _codigo);
 
-		codigo = _codigo;
-		nombre = _nombre;
-		requisito = _requisito;
+		nombre = new char[strlen(_nombre)];
+		strcpy_s(this->nombre, strlen(_nombre) + 1, _nombre);
 
 		uv = _uv;
 		cantiHijos = 0;
 		hijos = 0;
 	}
 };
+
+struct HijosFile {
+	char Hijo[6];
+};
+
+struct materiaFile {
+	char codigo[10];
+	char nombre[30];
+	int uv;
+	HijosFile hijos [4];
+
+	materiaFile() {
+		strcpy(codigo, "-1");
+		strcpy(nombre, "-1");
+		uv = 0;
+	}
+};
+
+
+
 
 
 class PlanEstudio {
@@ -41,7 +90,7 @@ private:
 	void imprimirRec(materia*);
 public:
 	PlanEstudio();
-	void agregarMateria(string, string, int, string);
+	void agregarMateria(char[10], char[20], int, char[10]);
 	materia* buscar(string);
 	void imprimir();
 
@@ -49,15 +98,6 @@ public:
 	void crearPensum(string);
 	void leerPensum(string);
 };
-
-struct Estudiantes {
-	int NumeroCuenta;
-	char* NombreEstudiante;
-	char* CodPlanEstudio;
-	double IndiceAcademico;
-	int ClasesAprobadas;
-};
-
 
 
 #endif 

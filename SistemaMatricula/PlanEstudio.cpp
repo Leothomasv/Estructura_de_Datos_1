@@ -46,95 +46,82 @@ void PlanEstudio::imprimirRec(materia* raiz) {
 
 void PlanEstudio::crearPensum(string NombreArchivo) {
 
-	ofstream filePensum (NombreArchivo, ios::out ||ios::app || ios::binary);
-
-	//string codigo; string nombre; int uv; string requisito;
-	materia nuevo;
+	ofstream filePensum (NombreArchivo, ios::out |ios::app | ios::binary);
+	materiaFile nuevo;
 	
 	for (int i = 0; i < 2; i++) { 
 		cout << "<>><><><><><><><>><><><><><>><><><>"<<endl;
-		cout << "Ingrese codigo de materia: ";
+		cout << "Ingrese codigo de materia:";
 		cin >> nuevo.codigo;
-		cout << "Ingrese nombre de materia: ";
+		cout << "Ingrese nombre de materia:";
 		cin >> nuevo.nombre;
-		cout << "Ingrese UV de materia: ";
+		cout << "Ingrese UV de materia:";
 		cin >> nuevo.uv;
-		cout << "Ingrese requisito de materia: ";
-		cin >> nuevo.requisito;
 		cout << "<>><><><><><><><>><><><><><>><><><>"<<endl;
-		
-		//agregarMateria(codigo, nombre, uv, requisito);
-		
-		//filePensum << "Codigo: " << codigo << " Nombre: " << nombre << " UV: " << uv << " Requisito: " << requisito <<"\n";
+	
+
 		//binario
-		filePensum.write(reinterpret_cast<const char*>(&nuevo), sizeof(materia));
+		filePensum.write(reinterpret_cast<const char*>(&nuevo), sizeof(materiaFile));
 
 	}
 	filePensum.close();
 
+	cout << "<<PENSUM CREADO EXITOSAMENTE>>" << endl;
 	leerPensum(NombreArchivo);
 }
 
 
 void PlanEstudio::leerPensum(string nomnbrearchivo) {
-	string codigo; string nombre; int uv; string requisito;
-
 	ifstream filePensum(nomnbrearchivo, ios::in | ios::binary);
 	filePensum.seekg(0, ios::beg);
 
-	materia lectura;
+	materiaFile lectura;
 
-	filePensum.read(reinterpret_cast<char*>(&lectura), sizeof(materia));
+	filePensum.read(reinterpret_cast<char*>(&lectura), sizeof(materiaFile));
 
 
-	while (filePensum.eof()) {
+	while (!filePensum.eof()) {
+		cout << "Codigo: " << lectura.codigo << " Nombre: " << lectura.nombre << " UV: " << lectura.uv << endl;
 
-		codigo = lectura.codigo;
-		nombre = lectura.nombre;
-		uv = lectura.uv;
-		requisito = lectura.requisito;
-
-		agregarMateria(codigo, nombre, uv, requisito);
-
-		filePensum.read(reinterpret_cast<char*>(&lectura), sizeof(materia));
+		filePensum.read(reinterpret_cast<char*>(&lectura), sizeof(materiaFile));
 
 	}
 	filePensum.close();
 
 }
 
-void PlanEstudio::agregarMateria(string codigo, string nombre, int uv, string requisito) {
-
-	materia* nueva = new materia(codigo, nombre, uv, requisito);
-
-	if (estaVacio()) {
-		raiz = nueva;
-		return;
-	}
-
-	materia* padre = buscar(requisito);
-
-	if (padre == 0) {
-		cout << "!!CLASE NO TIENE REQUISITOS!!\n";
-		delete nueva;
-		return;
-	}
-
-	//crear copia de hijos
-	materia** tmpHijos = new materia * [padre->cantiHijos + 1]; //declarando un arreglo de apuntadores
-	for (int i = 0; i < padre->cantiHijos; i++) {
-		tmpHijos[i] = padre->hijos[i];
-	}
-	tmpHijos[padre->cantiHijos] = nueva;
-
-	if (padre->cantiHijos != 0) {
-		delete padre->hijos;
-	}
-
-	padre->cantiHijos++;
-
-	padre->hijos = tmpHijos;
-
-	return;
-
-}
+//void PlanEstudio::agregarMateria(char codigo[10], char nombre[20], int uv, char requisito[20]) {
+//
+//	materia* nueva = new materia(codigo, nombre, uv, requisito);
+//
+//	if (estaVacio()) {
+//		raiz = nueva;
+//		return;
+//	}
+//
+//	materia* padre = buscar(requisito);
+//
+//	if (padre == 0) {
+//		cout << "!!CLASE NO TIENE REQUISITOS!!\n";
+//		delete nueva;
+//		return;
+//	}
+//
+//	//crear copia de hijos
+//	materia** tmpHijos = new materia * [padre->cantiHijos + 1]; //declarando un arreglo de apuntadores
+//	for (int i = 0; i < padre->cantiHijos; i++) {
+//		tmpHijos[i] = padre->hijos[i];
+//	}
+//	tmpHijos[padre->cantiHijos] = nueva;
+//
+//	if (padre->cantiHijos != 0) {
+//		delete padre->hijos;
+//	}
+//
+//	padre->cantiHijos++;
+//
+//	padre->hijos = tmpHijos;
+//
+//	return;
+//
+//}

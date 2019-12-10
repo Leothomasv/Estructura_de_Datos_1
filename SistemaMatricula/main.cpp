@@ -6,7 +6,6 @@ int main() {
 	int OpcionPrincipal = 0;
 	string NombrePensum;
 	
-
 	PlanEstudio nuevo;
 	do {
 		cout << "<<<< MENU PRINCIPAL >>>>" << endl;
@@ -24,20 +23,20 @@ int main() {
 		{
 		case 1:
 			//Crear Pensum
+			cout << "-------------------------------------------------------" << endl;
 			cout << "Ingrese nombre del pensum: ";
 			cin >> NombrePensum;
 			nuevo.crearPensum(NombrePensum);
 			break;
 
 		case 2:
-
+		
 			break;
 
 		case 3:
-
 			break;
-		case 4:
 
+		case 4:
 			break;
 
 		case 5:
@@ -47,4 +46,6 @@ int main() {
 		}
 	} while (OpcionPrincipal !=5);
 
+
+	
 }
