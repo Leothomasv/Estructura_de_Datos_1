@@ -3,9 +3,11 @@
 #include <iostream>
 
 using std::setw;
-using std::cout;
 
 #define INFINITO 9999
+int matriz[4][4];
+
+
 
 Grafo::Grafo() {
 	vertices = 0;
@@ -92,6 +94,10 @@ void Grafo::agregarArista(char origen, char destino, int costo)
 
 		costos[fila][columna] = costo;
 		costos[columna][fila] = costo;
+
+		matriz[fila][columna] = costo;
+		matriz[columna][fila] = costo;
+		
 	}
 
 
@@ -105,9 +111,90 @@ int Grafo::obtenerIndiceVertice(char id) {
 	}
 }
 
+void Grafo::Floyd(int b[][4])
+{
+	int i, j, k;
+	for (k = 0; k < nVertices; k++)
+	{
+		for (i = 0; i < nVertices; i++)
+		{
+			for (j = 0; j < nVertices; j++)
+			{
+				if ((b[i][k] * b[k][j] != 0) && (i != j))
+				{
+					if ((b[i][k] + b[k][j] < b[i][j]) || (b[i][j] == 0))
+					{
+						b[i][j] = b[i][k] + b[k][j];
+					}
+				}
+			}
+		}
+	}
+	for (i = 0; i < nVertices; i++)
+	{
+		cout << "\nCosto Minimo respecto al Nodo:" << i << endl;
+		for (j = 0; j < nVertices; j++)
+		{
+			cout << b[i][j] << "\t";
+		}
+
+	}
+
+
+}
+
+/////// DIJKSTRA///////////////////////
+int Grafo::minDistance(int dist[], bool sptSet[])
+{
+
+	int min = INT_MAX, min_index;
+
+	for (int v = 0; v < nVertices; v++)
+		if (sptSet[v] == false && dist[v] <= min)
+			min = dist[v], min_index = v;
+
+	return min_index;
+}
+
+void Grafo::printDijkstra(int dist[])
+{
+	printf("\tVertice \t Distancia desde el origen\n");
+	for (int i = 0; i < nVertices; i++)
+		printf("\t%d \t\t\t %d\n", i, dist[i]);
+}
+
+void Grafo::Dijkstra(int graph[][4], int src)
+{
+	int dist[4]; 
+
+	bool sptSet[4];  
+
+	for (int i = 0; i < nVertices; i++)
+		dist[i] = INT_MAX, sptSet[i] = false;
+
+	dist[src] = 0;
+
+	for (int count = 0; count < nVertices - 1; count++) {
+		int u = minDistance(dist, sptSet);
+
+		sptSet[u] = true;
+
+		for (int v = 0; v < nVertices; v++)
+
+			if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX
+				&& dist[u] + graph[u][v] < dist[v])
+				dist[v] = dist[u] + graph[u][v];
+	}
+
+	printDijkstra(dist);
+
+}
+
+
+
+
 void Grafo::imprimir() {
-	
-	cout << setw(2) << " ";
+	/*cout << setw(2) << " ";
 	for (int i = 0; i < nVertices; i++) {
 		cout << setw(2) << vertices[i];
 	}
@@ -120,7 +207,7 @@ void Grafo::imprimir() {
 			cout << setw(2) << aristas[i][j];
 		}
 		cout << "\n";
-	}
+	}*/
 
 	cout << setw(6) << " ";
 	for (int i = 0; i < nVertices; i++) {
@@ -135,9 +222,13 @@ void Grafo::imprimir() {
 		}
 		cout << "\n";
 	}
+	cout << "\n\n\n";
+	cout << "<<<FLOYD>>>\n";
+	Floyd(matriz);
+	
+	cout << "\n\n\n";
+	cout << "<<<Dijkstra>>\n";
+	Dijkstra(matriz, 0);
 }
 
-void Grafo::TransformarGrafo() {
 
-
-}
