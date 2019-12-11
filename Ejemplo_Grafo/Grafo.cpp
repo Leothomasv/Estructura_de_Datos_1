@@ -190,9 +190,6 @@ void Grafo::Dijkstra(int graph[][4], int src)
 
 }
 
-
-
-
 void Grafo::imprimir() {
 	/*cout << setw(2) << " ";
 	for (int i = 0; i < nVertices; i++) {

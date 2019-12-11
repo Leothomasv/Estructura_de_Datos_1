@@ -39,22 +39,15 @@ using namespace std;
 //};
 
 struct materia {//memoria
-	char* nombre;
-	char* codigo;
+	string nombre;
+	string codigo;
 	int uv;
-	materia** hijos;
+	materia* hijos;
 	int cantiHijos;
 
-	materia() {}
-
-	materia(const char* _codigo, const char* _nombre, int _uv) {
-
-		codigo = new char[strlen(_codigo)];
-		strcpy_s(this->nombre, strlen(_codigo) + 1, _codigo);
-
-		nombre = new char[strlen(_nombre)];
-		strcpy_s(this->nombre, strlen(_nombre) + 1, _nombre);
-
+	materia(string codigo, string nombre, int _uv) {
+		this->codigo = codigo;
+		this->nombre = nombre;
 		uv = _uv;
 		cantiHijos = 0;
 		hijos = 0;
@@ -78,21 +71,17 @@ struct materiaFile {
 	}
 };
 
-
-
-
-
 class PlanEstudio {
 private:
-	materia* raiz;
 	bool estaVacio();
 	materia* buscarRec(materia*, string);
 	void imprimirRec(materia*);
 public:
+	materia** raiz;
 	PlanEstudio();
-	void agregarMateria(char[10], char[20], int, char[10]);
 	materia* buscar(string);
 	void imprimir();
+	void agregarMateria(string, string, int, string);
 
 	//nuevas 
 	void crearPensum(string);

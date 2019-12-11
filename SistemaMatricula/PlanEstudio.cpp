@@ -1,15 +1,53 @@
 #include "PlanEstudio.h"
 
-PlanEstudio::PlanEstudio() : raiz(0) {}
+PlanEstudio::PlanEstudio() {}
+void PlanEstudio::agregarMateria(string codigo, string nombre, int uv, string CodigoPadre) {
+	materia* nueva = new materia(codigo, nombre, uv);
+	
+	
+	if (estaVacio()) {
+		raiz = &nueva;
+		return;
+	}
 
+	if (CodigoPadre=="")
+	{
+		raiz[1] =(materia*)nueva;
+		return;
+	}
+	materia* padre = buscar(CodigoPadre);
+
+	if (padre == 0) {
+		cout << "Codigo de clase requisisto incorrecto!";
+		delete nueva;
+		return;
+	}
+
+	//crear copia de hijos
+	materia** tmpHijos = new materia * [padre->cantiHijos + 1]; //declarando un arreglo de apuntadores
+	for (int i = 0; i < padre->cantiHijos; i++) {
+		//tmpHijos[i] = padre->hijos[i];
+	}
+	//tmpHijos[padre->cantiHijos] = nueva;
+
+	if (padre->cantiHijos != 0) {
+		delete padre->hijos;
+	}
+
+	padre->cantiHijos++;
+
+	//padre->hijos = tmpHijos;
+
+	//cout << "Materia Ingresada!";
+}
 bool PlanEstudio::estaVacio() {
 
 	return raiz == 0;
 }
 
 materia* PlanEstudio::buscar(string requisito) {
-
-	return buscarRec(raiz, requisito);
+	return 0;
+	//return buscarRec(raiz, requisito);
 }
 
 materia* PlanEstudio::buscarRec(materia* raiz, string requisito) {
@@ -21,15 +59,15 @@ materia* PlanEstudio::buscarRec(materia* raiz, string requisito) {
 
 	for (int i = 0; i < raiz->cantiHijos; i++) {
 
-		materia* tmp = buscarRec(raiz->hijos[i], requisito);
-		if (tmp != 0)
-			return tmp;
+		//materia* tmp = buscarRec(raiz->hijos[i], requisito);
+		//if (tmp != 0)
+			//return tmp;
 	}
 	return 0;
 }
 
 void PlanEstudio::imprimir() {
-	imprimirRec(raiz);
+	//imprimirRec(raiz);
 }
 
 void PlanEstudio::imprimirRec(materia* raiz) {
@@ -40,7 +78,7 @@ void PlanEstudio::imprimirRec(materia* raiz) {
 	cout << "Materia { codigo: " << raiz->codigo << ", Nombre: " << raiz->nombre << "}" << endl;
 
 	for (int i = 0; i < raiz->cantiHijos; i++) {
-		imprimirRec(raiz->hijos[i]);
+		//imprimirRec(raiz->hijos[i]);
 	}
 }
 
