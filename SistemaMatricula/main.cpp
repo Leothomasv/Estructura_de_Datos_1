@@ -1,22 +1,15 @@
 #include "PlanEstudio.h"
+#include "Estudiantes.h"
 
-
-int main() {
-	PlanEstudio P;
-	P.agregarMateria("","",0,"");
-	P.agregarMateria("ELE1", "ELECTIVA IDIOMA", 4, "");
-	P.agregarMateria("CCC107", "INTRODUCCION ALA COMPUTACION", 4, "");
-	//P.agregarMateria("MAT101", "INTRODUCCION AL ALGEBRA", 4, "");
-
-}
-
-
-/*
+void menu() {
 	int OpcionPrincipal = 0;
+	int infoOpc = 0;
 	string NombrePensum;
 
-	PlanEstudio nuevo;
+	PlanEstudio plan;
+	Estudiantes estudiante;
 	do {
+		cout << "\n";
 		cout << "<<<< MENU PRINCIPAL >>>>" << endl;
 		cout << "1. Crear Pensum" << endl;
 		cout << "2. Matricularse" << endl;
@@ -31,21 +24,31 @@ int main() {
 		switch (OpcionPrincipal)
 		{
 		case 1:
-			//Crear Pensum
 			cout << "-------------------------------------------------------" << endl;
 			cout << "Ingrese nombre del pensum: ";
 			cin >> NombrePensum;
-			nuevo.crearPensum(NombrePensum);
+			plan.crearPensum(NombrePensum);
 			break;
 
 		case 2:
-
+			cout << "\n";
+			cout << "<<Pensums disponibles>>" << endl;
+			plan.leerVector();
+			cout << "\n";
+			estudiante.agregarEstudiante();
 			break;
 
 		case 3:
+			plan.leerPensum();
+			cout << "\n";
+			cout << "<<Clases disponibles>>" << endl;
+			plan.obtenerClasesDisponibles();
+			estudiante.registrarNotas();
 			break;
 
 		case 4:
+			cout << "\n";
+			plan.obtenerHistorialAcademico();
 			break;
 
 		case 5:
@@ -53,7 +56,20 @@ int main() {
 		default:
 			break;
 		}
-	} while (OpcionPrincipal !=5);
+	} while (OpcionPrincipal != 5);
 
 
-	*/
+
+
+}
+
+int main() {
+	PlanEstudio p;
+	//rClasesDisponibles();
+
+	menu();
+}
+
+
+
+	

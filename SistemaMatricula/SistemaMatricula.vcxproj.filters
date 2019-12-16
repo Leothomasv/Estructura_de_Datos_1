@@ -21,6 +21,9 @@
     <ClCompile Include="PlanEstudio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Estudiantes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlanEstudio.h">

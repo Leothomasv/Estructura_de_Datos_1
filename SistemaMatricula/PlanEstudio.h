@@ -4,69 +4,41 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 using namespace std;
-
-
-//struct materia {
-//
-//	char codigo[10];
-//	char nombre[20];
-//	int uv;
-//	char requisito[10];
-//
-//	int cantiHijos;
-//
-//	materia** hijos;//arreglo de apuntadores
-//
-//	materia(){
-//		strcpy_s(codigo, "-1");
-//		strcpy_s(nombre, "-1");
-//		strcpy_s(requisito, "-1");
-//		uv = 0;
-//		cantiHijos = 0;
-//		hijos = 0;
-//	}
-//
-//	materia( char _codigo[10], char _nombre[20], int _uv, char _requisito[10]) {
-//
-//		strcpy_s(codigo,_codigo);
-//		strcpy_s(nombre, _nombre);
-//		strcpy_s(requisito, _requisito);
-//		uv = _uv;
-//		cantiHijos = 0;
-//		hijos = 0;
-//	}
-//};
-
 struct materia {//memoria
-	string nombre;
-	string codigo;
-	int uv;
-	materia* hijos;
-	int cantiHijos;
-	materia* guardar;
-	materia(string codigo, string nombre, int _uv) {
+	string nombre = "";
+	string codigo = "";
+	int uv = 0;
+	string requisito;
+	materia** hijos = 0;
+	int cantiHijos = 0;
+	int TotalUV = 0;
+	string desbloqueo = "";
+	materia(){}
+	materia(string codigo, string nombre, int _uv, string _requisito,string des) {
 		this->codigo = codigo;
 		this->nombre = nombre;
 		uv = _uv;
+		this->requisito = _requisito;
 		cantiHijos = 0;
 		hijos = 0;
+		desbloqueo = des;
 	}
 };
 
-struct HijosFile {
-	char Hijo[6];
-};
 
 struct materiaFile {
-	char codigo[10];
-	char nombre[30];
+	char codigo[15];
+	char nombre[40];
 	int uv;
-	HijosFile hijos [4];
-
+	char requisito[50];
+	char desbloqueo[45];
 	materiaFile() {
 		strcpy(codigo, "-1");
 		strcpy(nombre, "-1");
+		strcpy(requisito, "-1");
+		strcpy(desbloqueo, "-1");
 		uv = 0;
 	}
 };
@@ -74,20 +46,28 @@ struct materiaFile {
 class PlanEstudio {
 private:
 	bool estaVacio();
-	materia* buscarRec(materia*, string);
+	materia** buscarRec(materia**, string);
 	void imprimirRec(materia*);
 public:
+	int raices = 0;
 	materia** raiz;
 	PlanEstudio();
-	materia* buscar(string);
+	materia** buscar(string);
 	void imprimir();
-	void agregarMateria(string, string, int, string);
-
-	//nuevas 
+	void agregarMateria(string, string, int, string,string);
+	void obtenerClasesDisponibles();
+	void obtenerHistorialAcademico();
+	bool claseAprobada(string);
+	void ModificarNota(string,int);
+	void recorrer(materia**);
+	void padres(materia**,string);
+	void Rec(string codigo);
+	//nuevas
 	void crearPensum(string);
-	void leerPensum(string);
+	void leerPensum();
+	void leerVector();
+
 };
 
 
-#endif 
-
+#endif
